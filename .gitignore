@@ -154,6 +154,6 @@ cython_debug/
 
 save_project_code.sh
 project_code.txt
-target_codebases
+target-codebases
 storage/
 frontend/

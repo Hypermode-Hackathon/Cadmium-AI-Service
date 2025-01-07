@@ -44,7 +44,7 @@ class NaiveRAGService:
             VectorStoreIndex: The loaded or newly created index.
         """
         index_pickle_path = self._get_index_path()
-        input_dir = f"target_codebases/{self.application_id}"
+        input_dir = f"target-codebases/{self.application_id}"
 
         if os.path.exists(index_pickle_path):
             print(f"Loading existing index for application_id '{self.application_id}'...")
