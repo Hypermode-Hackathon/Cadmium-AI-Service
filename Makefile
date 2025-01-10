@@ -6,18 +6,24 @@ BIN_DIR=bin
 FRONTEND_DIR=../Cadmium-LogiSense
 
 # Default target
-.PHONY: start install compile frontend clean help run
+.PHONY: start install compile frontend clean help run create-venv
 
 # Help target (default action if no target is specified)
 help:
 	@echo "Available make targets:"
-	@echo "  start      - Start the backend server and Ollama service"
-	@echo "  install    - Install Python dependencies from requirements.txt"
-	@echo "  compile    - Compile the backend into a standalone binary using Nuitka"
-	@echo "  frontend   - Start the Electron frontend"
-	@echo "  run        - Start both backend and frontend concurrently"
-	@echo "  clean      - Remove build artifacts"
-	@echo "  help       - Display this help message"
+	@echo "  create-venv - Create a Python virtual environment named 'env'"
+	@echo "  start       - Start the backend server and Ollama service"
+	@echo "  install     - Install Python dependencies from requirements.txt"
+	@echo "  compile     - Compile the backend into a standalone binary using Nuitka"
+	@echo "  frontend    - Start the Electron frontend"
+	@echo "  run         - Start both backend and frontend concurrently"
+	@echo "  clean       - Remove build artifacts"
+	@echo "  help        - Display this help message"
+
+# Create virtual environment
+create-venv:
+	@echo "Creating Python virtual environment in $(VENV_DIR)..."
+	python3.12 -m venv $(VENV_DIR)
 
 # Start backend server and Ollama service
 start:
@@ -29,7 +35,7 @@ start:
 # Install dependencies
 install:
 	@echo "Installing Python dependencies..."
-	. $(VENV_DIR)/bin/activate && pip install -r requirements.txt
+	. $(VENV_DIR)/bin/activate && pip install -r requirements.in
 
 # Compile backend into a standalone binary
 compile:
